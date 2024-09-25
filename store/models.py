@@ -46,7 +46,9 @@ class Customer(models.Model):
     membership = models.CharField(max_length=1, choices=MEMBERSHIP_CHOICES, default=MEMBERSHIP_BRONZE)
 
     class Meta:
+        db_table = 'store_customers'
         indexes = [
+            models.Index(fields=['first_name', 'last_name']),
             models.Index(fields=['membership']),
         ]
 
